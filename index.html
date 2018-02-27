@@ -3,30 +3,70 @@
   <head>
     <style>
        #map {
-        height: 400px;
+        height: 500px;
         width: 100%;
        }
     </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
+        // Initialize map over Boston.
+        starting_lat = 42.3583333
+        var startCoordinates = {lat: 42.3583333, lng: -71.0602778};
+        mapDiv = document.getElementById('map')
+        mapOptions = {
+          zoom: 14,
+          center: startCoordinates,
+          mapTypeId: 'satellite',
+        }
+        var map = new google.maps.Map(
+            mapDiv,
+            mapOptions
+        );
       }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACeOVdalXmjRb_RL2DYqU3H6LUowBETac&callback=initMap">
     </script>
+
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <h3>Solar Calculator</h3>
+    <div id="map"></div>
+    <div class="container">
+        <div class='row'>
+          <div class='col-xs-12'>
+                <div id="map-toolbox">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" aria-label="Checkbox for following text input">
+                      Check to draw solar area  
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class="col-xs-12 col-sm-6">
+            <div class="text-center">
+              <h1>Location Info</h1> 
+            </div>
+            <div id="location-data">
+                Coordinates
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="text-center">
+              <h1>Solar Data</h1>
+            </div>
+            <div class="solar-data">
+              Select an area to view solar availability.
+            </div>
+          </div>
+        </div>
+    </div>
   </body>
 </html>
-      
