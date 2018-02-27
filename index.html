@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
 <html>
   <head>
+    <meta charset="UTF-8"> 
     <style>
        #map {
         height: 500px;
@@ -10,15 +12,14 @@
     <script>
       function initMap() {
         // Initialize map over Boston.
-        starting_lat = 42.3583333
-        var startCoordinates = {lat: 42.3583333, lng: -71.0602778};
+        var bostonCoordinates = {lat: 42.3583333, lng: -71.0602778};
         mapDiv = document.getElementById('map')
         mapOptions = {
           zoom: 14,
-          center: startCoordinates,
+          center: bostonCoordinates,
           mapTypeId: 'satellite',
         }
-        var map = new google.maps.Map(
+        map = new google.maps.Map(
             mapDiv,
             mapOptions
         );
@@ -30,6 +31,9 @@
 
     <!-- Load Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="js/solar_map.js"></script>
+  
   </head>
   <body>
     <h3>Solar Calculator</h3>
@@ -41,7 +45,7 @@
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <input type="checkbox" aria-label="Checkbox for following text input">
+                      <input id="id_draw-toggle" type="checkbox" aria-label="Checkbox for following text input">
                       Check to draw solar area  
                     </div>
                   </div>
