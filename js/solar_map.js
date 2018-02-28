@@ -32,8 +32,8 @@ function initMap() {
     selectedArea = e;
     selectedAreaSize = getArea(selectedArea);
     nominalPower = getNominalPower(selectedAreaSize);
-    $('#selected-area-span').html(selectedAreaSize + " Meters");
-    $('#nominal-power-span').html(nominalPower + " kW");
+    $('#selected-area-span').html(selectedAreaSize + " m" + "2".sup());
+    $('#nominal-power-span').html(nominalPower + " kWh");
   });
 }
 
@@ -77,5 +77,5 @@ function getNominalPower(sqMetersOfPanel){
   efficiencyYield = 0.156  // percentage
   solarRadiation = 2600 // kWh/m2
   performanceRatio = 0.75 // coeffecient
-  return sqMetersOfPanel * efficiencyYield * solarRadiation * performanceRatio;
+  return Math.round(sqMetersOfPanel * efficiencyYield * solarRadiation * performanceRatio);
 }
