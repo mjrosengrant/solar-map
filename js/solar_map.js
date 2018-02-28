@@ -65,8 +65,17 @@ function getArea(selectedArea) {
 function getNominalPower(sqMetersOfPanel){
   /* Should calculate how much energy is created using x square meters of solar panel
 
-  For now is an arbitrary number  
+  E = A * r * H * PR 
+  E = Energy (kWh) 
+  A = Total solar panel Area (m2) 
+  r = solar panel yield or efficiency(%) 
+  H = Annual average solar radiation on tilted panels (shadings not included)
+  PR = Performance ratio, coefficient for losses (range between 0.5 and 0.9, default value = 0.75) 
+  Source: http://photovoltaic-software.com/PV-solar-energy-calculation.php
   */
-  rate = 50 // 50 kW of energy per 1 square meter of solar panels. Accurate?
-  return rate * sqMetersOfPanel;
+  // Values based on Source: http://photovoltaic-software.com/PV-solar-energy-calculation.php
+  efficiencyYield = 0.156  // percentage
+  solarRadiation = 2600 // kWh/m2
+  performanceRatio = 0.75 
+  return sqMetersOfPanel * efficiencyYield * solarRadiation * performanceRatio;
 }
