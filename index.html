@@ -9,7 +9,7 @@
         width: 100%;
        }
     </style>
-    <script src="js/google_maps.js"></script>
+    <script src="js/solar_map.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACeOVdalXmjRb_RL2DYqU3H6LUowBETac&callback=initMap&libraries=drawing,geometry">
     </script>
@@ -20,38 +20,26 @@
     <script src="js/solar_map.js"></script>
   </head>
   <body>
-    <h3>Solar Calculator</h3>
+    <h2>Solar Calculator</h2>
+    <h3>Use draw tools on Map to select an area to cover in solar panels</h3>
     <div id="map"></div>
     <div class="container">
-        <div class='row'>
-          <div class='col-xs-12'>
-              <div id="map-toolbox">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <input id="id_draw-toggle" type="checkbox" aria-label="Checkbox for following text input">
-                      Check to draw solar area  
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
         <div class='row'>
           <div class="col-xs-12 col-sm-6">
             <div class="text-center">
               <h1>Location Info</h1> 
             </div>
             <div id="location-data">
-                Coordinates
+                Under Construction
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">
             <div class="text-center">
               <h1>Solar Data</h1>
             </div>
-            <div class="solar-data">
-              Select an area to view solar availability.
+            <div id="solar-data">
+              Selected area size: <span id="selected-area-span"></span><br>
+              Nominal Power: <span id="nominal-power-span"></span><br>
             </div>
           </div>
         </div>
