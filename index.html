@@ -9,68 +9,7 @@
         width: 100%;
        }
     </style>
-    <script>
-      var selectedArea;
-      function initMap() {
-        // Initialize map over Boston.
-        var bostonCoordinates = {lat: 42.3583333, lng: -71.0602778};
-        var mapDiv = document.getElementById('map')
-        var mapOptions = {
-          zoom: 14,
-          center: bostonCoordinates,
-          mapTypeId: 'satellite',
-        }
-
-        map = new google.maps.Map(
-            mapDiv,
-            mapOptions
-        );
-
-        // set up drawing manager for creating polygons.
-        drawingManager = new google.maps.drawing.DrawingManager({
-          drawingModes: ['rectangle', 'polygon'],
-          map: map
-        });
-
-        // Upon completing a new overlay, remove any existing ones.
-        google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
-          if (selectedArea) {
-            // Delete the existing overlay.
-            selectedArea.overlay.setMap(null)
-          }
-          selectedArea = e
-          area = getArea(selectedArea)
-          alert(area); 
-        });
-      }
-
-      function getArea(selectedArea) {
-        rec = new google.maps.Rectangle(selectedArea.overlay)
-        // corner1Lat = selectedArea.overlay.bounds.f.b
-        // corner1Lng = selectedArea.overlay.bounds.b.b
-        
-        // corner2Lat = selectedArea.overlay.bounds.f.f
-        // corner2Lng = selectedArea.overlay.bounds.b.f
-
-        neLat = rec.getBounds().getNorthEast().lat()
-        neLng = rec.getBounds().getNorthEast().lng()
-
-        swLat = rec.getBounds().getSouthWest().lat()
-        swLng = rec.getBounds().getSouthWest().lng() 
-        
-        mvcArray = new google.maps.MVCArray([
-          {
-            'lat': neLat,
-            'lng': neLng
-          },
-          {
-            'lat': swLat,
-            'lng': swLng
-          }
-        ])
-        return google.maps.geometry.spherical.computeArea(mvcArray)
-      }
-    </script>
+    <script src="js/google_maps.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACeOVdalXmjRb_RL2DYqU3H6LUowBETac&callback=initMap&libraries=drawing,geometry">
     </script>
@@ -86,7 +25,7 @@
     <div class="container">
         <div class='row'>
           <div class='col-xs-12'>
-                <div id="map-toolbox">
+              <div id="map-toolbox">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
