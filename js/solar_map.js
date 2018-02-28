@@ -76,6 +76,6 @@ function getNominalPower(sqMetersOfPanel){
   // Values based on Source: http://photovoltaic-software.com/PV-solar-energy-calculation.php
   efficiencyYield = 0.156  // percentage
   solarRadiation = 2600 // kWh/m2
-  performanceRatio = 0.75 
+  performanceRatio = 0.75 // coeffecient
   return sqMetersOfPanel * efficiencyYield * solarRadiation * performanceRatio;
 }
